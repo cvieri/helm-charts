@@ -38,11 +38,11 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           - name: "REDIS_HOST"
-            value: {{ .Release.Name }}-redis-master
+            value: {{ .Values.redis.hostname }}
           - name: "REDIS_PASSWORD"
             valueFrom:
               secretKeyRef:
-                name: {{ .Release.Name }}-redis
+                name: redis
                 key: redis-password
           ports:
             - name: http
